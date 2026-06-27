@@ -46,6 +46,25 @@
     .secao h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
     .secao h2 i { color: var(--verde); }
 
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.7); z-index: 1000;
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.ativo { display: flex; }
+    .modal-box {
+      background: #0d1f30; border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px; padding: 36px; width: 100%; max-width: 560px;
+      max-height: 90vh; overflow-y: auto;
+    }
+    .modal-box h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 24px; }
+    .modal-acoes { display: flex; gap: 12px; margin-top: 8px; }
+    .btn-cancelar {
+      flex: 1; background: rgba(255,255,255,0.06); color: var(--cinza);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+      padding: 13px; font-size: 15px; font-weight: 600; cursor: pointer;
+    }
+
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
     .app-lista { display: flex; flex-direction: column; gap: 12px; margin-top: 4px; }
@@ -88,6 +107,35 @@
       <label>Senha</label>
       <input type="password" id="campo-senha" placeholder="Digite sua senha" onkeydown="if(event.key==='Enter')entrar()"/>
       <button class="btn-green" onclick="entrar()"><i class="fas fa-unlock"></i> Entrar</button>
+    </div>
+  </div>
+
+  <!-- MODAL EDITAR -->
+  <div class="modal-overlay" id="modal-editar">
+    <div class="modal-box">
+      <h3><i class="fas fa-pen" style="color:var(--verde)"></i> Editar Aplicativo</h3>
+      <label>Nome</label>
+      <input type="text" id="e-nome"/>
+      <label>Categoria</label>
+      <select id="e-cat">
+        <option value="PCP">PCP</option>
+        <option value="Produção">Produção</option>
+        <option value="Gestão">Gestão</option>
+        <option value="Projetos">Projetos</option>
+        <option value="Outro">Outro</option>
+      </select>
+      <label>Descrição</label>
+      <textarea id="e-desc" style="min-height:120px"></textarea>
+      <label>Link do aplicativo</label>
+      <input type="url" id="e-link"/>
+      <div class="checkbox-row">
+        <input type="checkbox" id="e-destaque"/>
+        <label for="e-destaque">Marcar como destaque</label>
+      </div>
+      <div class="modal-acoes">
+        <button class="btn-cancelar" onclick="fecharModal()">Cancelar</button>
+        <button class="btn-green" style="flex:2" onclick="salvarEdicao()"><i class="fas fa-save"></i> Salvar</button>
+      </div>
     </div>
   </div>
 
@@ -203,6 +251,7 @@
           </div>
           <div class="app-item-acoes">
             ${a.link ? `<a href="${a.link}" target="_blank" class="btn-icon" title="Abrir app"><i class="fas fa-external-link-alt"></i></a>` : ''}
+            <button class="btn-icon" onclick="abrirEditar(${i})" title="Editar"><i class="fas fa-pen"></i></button>
             <button class="btn-icon danger" onclick="remover(${i})" title="Remover"><i class="fas fa-trash"></i></button>
           </div>
         </div>
@@ -231,6 +280,35 @@
       const msg = document.getElementById('msg-ok');
       msg.style.display = 'block';
       setTimeout(() => msg.style.display = 'none', 3000);
+    }
+
+    let editandoIndex = -1;
+
+    function abrirEditar(i) {
+      editandoIndex = i;
+      const a = apps[i];
+      document.getElementById('e-nome').value = a.nome;
+      document.getElementById('e-cat').value = a.categoria;
+      document.getElementById('e-desc').value = a.descricao;
+      document.getElementById('e-link').value = a.link || '';
+      document.getElementById('e-destaque').checked = a.destaque || false;
+      document.getElementById('modal-editar').classList.add('ativo');
+    }
+
+    function fecharModal() {
+      document.getElementById('modal-editar').classList.remove('ativo');
+      editandoIndex = -1;
+    }
+
+    function salvarEdicao() {
+      if (editandoIndex < 0) return;
+      apps[editandoIndex].nome = document.getElementById('e-nome').value.trim();
+      apps[editandoIndex].categoria = document.getElementById('e-cat').value;
+      apps[editandoIndex].descricao = document.getElementById('e-desc').value.trim();
+      apps[editandoIndex].link = document.getElementById('e-link').value.trim();
+      apps[editandoIndex].destaque = document.getElementById('e-destaque').checked;
+      salvarEAtualizar();
+      fecharModal();
     }
 
     function remover(i) {
