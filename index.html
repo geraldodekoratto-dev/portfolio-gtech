@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GTech Solutions – Portfólio</title>
+  <meta name="description" content="GTech Solutions – Soluções digitais desenvolvidas por Luiz Geraldo Martins para pequenos comércios, clínicas, academias e indústrias."/>
+  <meta property="og:title" content="GTech Solutions – Portfólio"/>
+  <meta property="og:description" content="Aplicativos desenvolvidos para transformar a gestão de todo tipo de negócio — tecnologia acessível para qualquer segmento."/>
+  <meta property="og:image" content="assets/logo-gtech.png"/>
+  <meta property="og:type" content="website"/>
+  <meta name="theme-color" content="#0d1b2a"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav class="nav-container">
+      <div class="logo-area">
+        <img src="assets/logo-gtech.png" alt="GTech Solutions" class="logo"/>
+      </div>
+      <div class="nav-links" id="nav-links">
+        <a href="#sobre" onclick="fecharMenu()">Sobre</a>
+        <a href="#apps" onclick="fecharMenu()">Portfólio</a>
+        <a href="#contato" onclick="fecharMenu()">Contato</a>
+        <a href="admin.html" class="btn-admin"><i class="fas fa-lock"></i> Admin</a>
+      </div>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="assets/logo-gtech.png" alt="GTech Solutions" class="hero-logo"/>
+      <span class="badge">Comércio · Saúde · Serviços · Indústria · Tecnologia</span>
+      <h1>Soluções Digitais para<br/><span class="highlight">Todo Tipo de Negócio</span></h1>
+      <p>Aplicativos desenvolvidos para transformar a gestão de pequenos comércios, clínicas, academias, serviços, indústrias e muito mais — tecnologia acessível para qualquer segmento.</p>
+      <div class="hero-btns">
+        <a href="#apps" class="btn-primary">Ver Portfólio</a>
+        <a href="#contato" class="btn-secondary">Entrar em Contato</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num" id="total-apps">0</span>
+        <span class="stat-label">Aplicativos</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">20+</span>
+        <span class="stat-label">Anos em Gestão de Negócios</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">30+</span>
+        <span class="stat-label">Anos em Marcenaria</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="sobre">
+    <div class="container">
+      <div class="sobre-grid">
+        <div class="sobre-texto">
+          <h2>Sobre</h2>
+          <h3>Luiz Geraldo Martins</h3>
+          <p>Profissional com mais de <strong>20 anos em Gestão de Negócios</strong>, com experiência em planejamento, controle de produção, engenharia e gestão de projetos em diferentes segmentos.</p>
+          <p>Unindo vivência prática e tecnologia, desenvolvo <strong>aplicativos sob medida</strong> para pequenos comércios, clínicas, academias, serviços, indústrias e qualquer negócio que queira crescer com organização e eficiência.</p>
+          <div class="tags">
+            <span>PCP</span>
+            <span>Móveis Planejados</span>
+            <span>Marcenaria</span>
+            <span>Projetos</span>
+            <span>Render</span>
+            <span>Python</span>
+            <span>HTML</span>
+          </div>
+        </div>
+        <div class="sobre-card">
+          <div class="card-info">
+            <div class="info-item">
+              <i class="fas fa-user"></i>
+              <div>
+                <strong>Nome</strong>
+                <span>Luiz Geraldo Martins</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-building"></i>
+              <div>
+                <strong>Empresa</strong>
+                <span>GTech Solutions</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-briefcase"></i>
+              <div>
+                <strong>Área</strong>
+                <span>PCP · Engenharia</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <strong>E-mail</strong>
+                <span>gtechsolutionsapp@gmail.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTROS + APPS -->
+  <section id="apps" class="apps-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Portfólio de Aplicativos</h2>
+        <p>Aplicativos desenvolvidos para resolver problemas reais de produção e gestão</p>
+      </div>
+      <div class="filtros">
+        <button class="filtro active" data-cat="todos">Todos</button>
+        <button class="filtro" data-cat="PCP">PCP</button>
+        <button class="filtro" data-cat="Produção">Produção</button>
+        <button class="filtro" data-cat="Gestão">Gestão</button>
+        <button class="filtro" data-cat="Projetos">Projetos</button>
+        <button class="filtro" data-cat="Outro">Outro</button>
+      </div>
+      <div class="apps-grid" id="apps-grid"></div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="contato">
+    <div class="container">
+      <h2>Entre em Contato</h2>
+      <p>Tem interesse em algum aplicativo ou quer saber mais sobre os projetos?</p>
+      <div class="contato-links">
+        <a href="mailto:gtechsolutionsapp@gmail.com" class="contato-btn">
+          <i class="fas fa-envelope"></i> gtechsolutionsapp@gmail.com
+        </a>
+        <a href="https://wa.me/5548999064554" target="_blank" class="contato-btn whatsapp-btn">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <img src="assets/logo-gtech.png" alt="GTech Solutions" class="footer-logo"/>
+    <p>© 2026 GTech Solutions · Luiz Geraldo Martins</p>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-box">
+      <button class="modal-fechar" id="modal-fechar"><i class="fas fa-times"></i></button>
+      <div class="modal-cat-label" id="modal-cat"></div>
+      <h2 class="modal-nome" id="modal-nome"></h2>
+      <p class="modal-desc" id="modal-desc"></p>
+      <a class="btn-primary modal-link" id="modal-link" href="#" target="_blank">
+        Ver aplicativo <i class="fas fa-external-link-alt"></i>
+      </a>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+[
+  {
+    "id": 1,
+    "nome": "PCP Gerenciador",
+    "descricao": "Sistema completo de Planejamento, Controle e Produção para a indústria moveleira. Gerenciamento de ordens de produção, prazos e recursos.",
+    "categoria": "PCP",
+    "link": "https://pcp-gerenciador.g-tech.live",
+    "screenshot": "",
+    "destaque": true
+  },
+  {
+    "id": 2,
+    "nome": "Gestão de Acabamento",
+    "descricao": "Controle da etapa de acabamento na produção moveleira. Acompanhamento de tarefas, qualidade e status de entrega de cada peça.",
+    "categoria": "PCP",
+    "link": "https://gestao-acabamento.g-tech.live",
+    "screenshot": "",
+    "destaque": true
+  },
+  {
+    "id": 3,
+    "nome": "Endereço Cliente",
+    "descricao": "Gerenciamento de cadastro e endereços de clientes. Consulta rápida e organização das informações para entregas e projetos.",
+    "categoria": "Gestão",
+    "link": "https://endereco-cliente.g-tech.live",
+    "screenshot": "",
+    "destaque": false
+  },
+  {
+    "id": 4,
+    "nome": "Produção Cronograma",
+    "descricao": "Ferramenta de cronograma para controle do fluxo de produção. Visualização de prazos, etapas e andamento das ordens de serviço.",
+    "categoria": "PCP",
+    "link": "https://producao-cronograma.lovable.app",
+    "screenshot": "",
+    "destaque": true
+  },
+  {
+    "id": 5,
+    "nome": "Prato Feito Pro",
+    "descricao": "Sistema profissional para gestão de restaurantes e lanchonetes. Controle completo de pedidos, cardápio digital e atendimento.",
+    "categoria": "Gestão",
+    "link": "https://prato-feito-pro.lovable.app",
+    "screenshot": "",
+    "destaque": false
+  },
+  {
+    "id": 6,
+    "nome": "Prato Feito",
+    "descricao": "Versão inicial do sistema para restaurantes. Controle de pedidos e atendimento ao cliente de forma simples e prática.",
+    "categoria": "Gestão",
+    "link": "https://prato-feito.lovable.app",
+    "screenshot": "",
+    "destaque": false
+  },
+  {
+    "id": 7,
+    "nome": "União Pedidos",
+    "descricao": "Centralização e gerenciamento de pedidos em um único painel. Facilita o controle do fluxo de pedidos de diferentes canais.",
+    "categoria": "Gestão",
+    "link": "https://uniaopedidos.lovable.app",
+    "screenshot": "",
+    "destaque": false
+  },
+  {
+    "id": 8,
+    "nome": "Linesio Vendas",
+    "descricao": "Sistema de controle comercial e vendas. Acompanhamento de metas, registros de negociações e relatórios de desempenho.",
+    "categoria": "Gestão",
+    "link": "https://linesio-vendas.lovable.app",
+    "screenshot": "",
+    "destaque": false
+  },
+  {
+    "id": 9,
+    "nome": "Vem Que Tem",
+    "descricao": "Aplicativo de loja de variedades. Catálogo digital com produtos diversificados — variedade e qualidade num só lugar.",
+    "categoria": "Outro",
+    "link": "https://vem-que-tem.lovable.app",
+    "screenshot": "",
+    "destaque": false
+  },
+  {
+    "id": 10,
+    "nome": "GTech Solutions",
+    "descricao": "Site institucional da GTech Solutions. Apresentação dos serviços, portfólio e canais de contato da empresa.",
+    "categoria": "Outro",
+    "link": "https://gtech-solutions.lovable.app",
+    "screenshot": "",
+    "destaque": false
+  },
+  {
+    "id": 11,
+    "nome": "Fin Wise Joy",
+    "descricao": "Aplicativo de educação e controle financeiro. Ferramentas para organizar finanças pessoais com leveza e praticidade.",
+    "categoria": "Gestão",
+    "link": "https://fin-wise-joy.lovable.app",
+    "screenshot": "",
+    "destaque": false
+  },
+  {
+    "id": 12,
+    "nome": "Secure Funds Suite",
+    "descricao": "Suite completa de gestão financeira segura. Controle de fluxo de caixa, entradas, saídas e relatórios financeiros detalhados.",
+    "categoria": "Gestão",
+    "link": "https://secure-funds-suite.lovable.app",
+    "screenshot": "",
+    "destaque": false
+  },
+  {
+    "id": 13,
+    "nome": "Lenfer Gestor de Obras",
+    "descricao": "Sistema de gestão de obras e projetos de construção. Controle de etapas, prazos, recursos e acompanhamento completo do andamento das obras.",
+    "categoria": "Projetos",
+    "link": "https://lenfer-gestor-de-obras.lovable.app/login",
+    "screenshot": "",
+    "destaque": true
+  }
+]

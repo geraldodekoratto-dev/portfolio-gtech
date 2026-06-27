@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin – GTech Solutions</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    .admin-wrap { max-width: 760px; margin: 0 auto; padding: 40px 24px; }
+    .admin-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; }
+    .admin-header h1 { font-size: 1.6rem; font-weight: 700; }
+    .admin-header a { color: var(--cinza); font-size: 14px; }
+    .admin-header a:hover { color: var(--verde); }
+
+    .login-box {
+      background: var(--card-bg); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 48px 40px; max-width: 420px; margin: 80px auto;
+      text-align: center;
+    }
+    .login-box img { height: 48px; margin-bottom: 24px; }
+    .login-box h2 { font-size: 1.4rem; margin-bottom: 8px; }
+    .login-box p { color: var(--cinza); font-size: 14px; margin-bottom: 28px; }
+
+    label { display: block; font-size: 13px; color: var(--cinza); margin-bottom: 6px; text-align: left; }
+    input, select, textarea {
+      width: 100%; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+      color: var(--branco); padding: 11px 14px; font-size: 14px;
+      font-family: 'Inter', sans-serif; margin-bottom: 18px; outline: none;
+      transition: border-color .2s;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--verde); }
+    textarea { resize: vertical; min-height: 80px; }
+    select option { background: #1a2e45; }
+
+    .btn-green {
+      width: 100%; background: var(--verde); color: var(--azul);
+      border: none; border-radius: 10px; padding: 13px;
+      font-size: 15px; font-weight: 700; cursor: pointer; transition: opacity .2s;
+    }
+    .btn-green:hover { opacity: .85; }
+
+    .secao { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 32px; margin-bottom: 28px; }
+    .secao h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+    .secao h2 i { color: var(--verde); }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .app-lista { display: flex; flex-direction: column; gap: 12px; margin-top: 4px; }
+    .app-item {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px; padding: 16px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .app-item-info strong { display: block; font-size: 15px; }
+    .app-item-info span { font-size: 13px; color: var(--cinza); }
+    .app-item-acoes { display: flex; gap: 10px; }
+    .btn-icon {
+      background: none; border: 1px solid rgba(255,255,255,0.1); color: var(--cinza);
+      width: 34px; height: 34px; border-radius: 8px; cursor: pointer;
+      font-size: 14px; transition: all .2s; display: flex; align-items: center; justify-content: center;
+    }
+    .btn-icon:hover { color: var(--verde); border-color: var(--verde); }
+    .btn-icon.danger:hover { color: #ff5c5c; border-color: #ff5c5c; }
+
+    .alert { padding: 12px 16px; border-radius: 8px; font-size: 14px; margin-bottom: 20px; display: none; }
+    .alert.ok { background: rgba(0,200,150,0.15); color: var(--verde); border: 1px solid rgba(0,200,150,0.3); }
+    .alert.erro { background: rgba(255,92,92,0.15); color: #ff5c5c; border: 1px solid rgba(255,92,92,0.3); }
+
+    .checkbox-row { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+    .checkbox-row input { width: auto; margin-bottom: 0; }
+    .checkbox-row label { margin-bottom: 0; }
+
+    #painel { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div id="tela-login">
+    <div class="login-box">
+      <img src="assets/logo-gtech.png" alt="GTech Solutions"/>
+      <h2>Painel Admin</h2>
+      <p>Acesso restrito · GTech Solutions</p>
+      <div class="alert erro" id="erro-login">Senha incorreta. Tente novamente.</div>
+      <label>Senha</label>
+      <input type="password" id="campo-senha" placeholder="Digite sua senha" onkeydown="if(event.key==='Enter')entrar()"/>
+      <button class="btn-green" onclick="entrar()"><i class="fas fa-unlock"></i> Entrar</button>
+    </div>
+  </div>
+
+  <!-- PAINEL -->
+  <div id="painel">
+    <header>
+      <nav class="nav-container">
+        <div class="logo-area">
+          <img src="assets/logo-gtech.png" alt="GTech Solutions" class="logo"/>
+        </div>
+        <div class="nav-links">
+          <span style="color:var(--verde);font-size:13px;font-weight:600"><i class="fas fa-shield-alt"></i> Admin</span>
+          <a href="index.html">Ver portfólio</a>
+          <a href="#" onclick="sair()" style="color:#ff5c5c"><i class="fas fa-sign-out-alt"></i> Sair</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="admin-wrap">
+
+      <!-- ADICIONAR APP -->
+      <div class="secao">
+        <h2><i class="fas fa-plus-circle"></i> Adicionar Novo Aplicativo</h2>
+        <div class="alert ok" id="msg-ok">Aplicativo salvo com sucesso!</div>
+
+        <div class="form-row">
+          <div>
+            <label>Nome do aplicativo *</label>
+            <input type="text" id="f-nome" placeholder="Ex: Controle de Produção"/>
+          </div>
+          <div>
+            <label>Categoria *</label>
+            <select id="f-cat">
+              <option value="PCP">PCP</option>
+              <option value="Produção">Produção</option>
+              <option value="Gestão">Gestão</option>
+              <option value="Projetos">Projetos</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+        </div>
+
+        <label>Descrição *</label>
+        <textarea id="f-desc" placeholder="Descreva o que o aplicativo faz e qual problema resolve..."></textarea>
+
+        <label>Link do aplicativo (Lovable, GitHub, etc.)</label>
+        <input type="url" id="f-link" placeholder="https://"/>
+
+        <label>URL da screenshot (opcional)</label>
+        <input type="url" id="f-screenshot" placeholder="https://"/>
+
+        <div class="checkbox-row">
+          <input type="checkbox" id="f-destaque"/>
+          <label for="f-destaque">Marcar como destaque</label>
+        </div>
+
+        <button class="btn-green" onclick="adicionarApp()"><i class="fas fa-save"></i> Salvar Aplicativo</button>
+      </div>
+
+      <!-- LISTA -->
+      <div class="secao">
+        <h2><i class="fas fa-list"></i> Seus Aplicativos (<span id="count-apps">0</span>)</h2>
+        <div class="app-lista" id="lista-admin"></div>
+        <button class="btn-green" onclick="exportarJSON()" style="margin-top:20px;background:rgba(0,200,150,0.15);color:var(--verde);border:1px solid rgba(0,200,150,0.4)">
+          <i class="fas fa-download"></i> Exportar apps.json
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const SENHA = 'GTECH26';
+    let apps = [];
+
+    function entrar() {
+      const s = document.getElementById('campo-senha').value;
+      if (s === SENHA) {
+        document.getElementById('tela-login').style.display = 'none';
+        document.getElementById('painel').style.display = 'block';
+        carregarApps();
+      } else {
+        document.getElementById('erro-login').style.display = 'block';
+      }
+    }
+
+    function sair() {
+      document.getElementById('tela-login').style.display = 'block';
+      document.getElementById('painel').style.display = 'none';
+      document.getElementById('campo-senha').value = '';
+    }
+
+    async function carregarApps() {
+      try {
+        const res = await fetch('apps.json?t=' + Date.now());
+        apps = await res.json();
+      } catch { apps = []; }
+      renderLista();
+    }
+
+    function renderLista() {
+      document.getElementById('count-apps').textContent = apps.length;
+      const lista = document.getElementById('lista-admin');
+      if (!apps.length) {
+        lista.innerHTML = '<p style="color:var(--cinza);text-align:center;padding:20px">Nenhum app cadastrado ainda.</p>';
+        return;
+      }
+      lista.innerHTML = apps.map((a, i) => `
+        <div class="app-item">
+          <div class="app-item-info">
+            <strong>${a.nome} ${a.destaque ? '⭐' : ''}</strong>
+            <span>${a.categoria} · ${a.descricao.substring(0, 60)}...</span>
+          </div>
+          <div class="app-item-acoes">
+            ${a.link ? `<a href="${a.link}" target="_blank" class="btn-icon" title="Abrir app"><i class="fas fa-external-link-alt"></i></a>` : ''}
+            <button class="btn-icon danger" onclick="remover(${i})" title="Remover"><i class="fas fa-trash"></i></button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function adicionarApp() {
+      const nome = document.getElementById('f-nome').value.trim();
+      const desc = document.getElementById('f-desc').value.trim();
+      const cat  = document.getElementById('f-cat').value;
+      const link = document.getElementById('f-link').value.trim();
+      const sc   = document.getElementById('f-screenshot').value.trim();
+      const dest = document.getElementById('f-destaque').checked;
+
+      if (!nome || !desc) { alert('Preencha nome e descrição!'); return; }
+
+      apps.push({ id: Date.now(), nome, descricao: desc, categoria: cat, link, screenshot: sc, destaque: dest });
+      salvarEAtualizar();
+
+      document.getElementById('f-nome').value = '';
+      document.getElementById('f-desc').value = '';
+      document.getElementById('f-link').value = '';
+      document.getElementById('f-screenshot').value = '';
+      document.getElementById('f-destaque').checked = false;
+
+      const msg = document.getElementById('msg-ok');
+      msg.style.display = 'block';
+      setTimeout(() => msg.style.display = 'none', 3000);
+    }
+
+    function remover(i) {
+      if (!confirm('Remover "' + apps[i].nome + '"?')) return;
+      apps.splice(i, 1);
+      salvarEAtualizar();
+    }
+
+    function salvarEAtualizar() {
+      // Salva no localStorage para persistência local
+      localStorage.setItem('gtech-apps', JSON.stringify(apps));
+      renderLista();
+    }
+
+    function exportarJSON() {
+      const blob = new Blob([JSON.stringify(apps, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'apps.json';
+      a.click();
+    }
+
+    // Ao carregar, verifica localStorage também
+    async function carregarApps() {
+      const local = localStorage.getItem('gtech-apps');
+      if (local) {
+        apps = JSON.parse(local);
+      } else {
+        try {
+          const res = await fetch('apps.json?t=' + Date.now());
+          apps = await res.json();
+        } catch { apps = []; }
+      }
+      renderLista();
+    }
+  </script>
+</body>
+</html>
